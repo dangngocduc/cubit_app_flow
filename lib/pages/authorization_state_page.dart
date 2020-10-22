@@ -22,16 +22,14 @@ class _AuthorizationStatePageState extends State<AuthorizationStatePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthBloc, AuthState>(
+    return BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
+          developer.log('build state: $state', name: TAG);
           return state.when(
               authorized: () => AuthorizedNavigation(),
               unauthorized: () => AuthorizationNavigation(),
           );
         },
-      listener: (context, state) {
-          //TODO STH
-      },
     );
   }
 }

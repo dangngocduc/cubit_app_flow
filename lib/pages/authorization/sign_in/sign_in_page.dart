@@ -11,6 +11,9 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   static const TAG = 'SignInPage';
+  
+  bool _isLoading = false;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,10 +22,19 @@ class _SignInPageState extends State<SignInPage> {
       ),
       body: Center(
         child: FlatButton(
-            onPressed: () {
-              context.read<AuthBloc>().login();
-            },
-            child: Text('SIGN IN')),
+            onPressed: !_isLoading ? () {
+              setState(() {
+                _isLoading = true;
+              });
+              context.read<AuthBloc>().login('user1', 'demo')
+                  .catchError((error){
+                setState(() {
+                  _isLoading = false;
+                });
+              });
+            } : null,
+            child: Text(_isLoading ? 'Loading' : 'SIGN IN'),
+        ),
       ),
     );
   }
