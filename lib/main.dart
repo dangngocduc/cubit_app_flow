@@ -9,6 +9,7 @@ import 'package:path_provider/path_provider.dart';
 import 'data/repositories/auth_repository.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final AuthRepository authRepository = AuthRepository();
   final document = await getApplicationDocumentsDirectory();
   Hive.init(document.path);
