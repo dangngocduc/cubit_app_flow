@@ -18,6 +18,10 @@ dependencies:
   freezed_annotation:
   json_annotation: ^3.0.1
 
+  #
+  hive: ^1.4.4+1
+  get_it: ^5.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
