@@ -1,6 +1,7 @@
 import 'dart:developer' as developer;
 import 'package:cubit_app_flow/pages/authorized/home/home_page.dart';
 import 'package:cubit_app_flow/pages/authorized/profile/profile_edit_page.dart';
+import 'package:cubit_app_flow/utils/navigator/navigator_support.dart';
 import 'package:flutter/material.dart';
 
 import 'module1/module1_navigation.dart';
@@ -16,7 +17,7 @@ class _AuthorizedNavigationState extends State<AuthorizedNavigation> {
   GlobalKey<NavigatorState> navigationKey = GlobalKey(debugLabel: 'AuthorizedNavigation');
   @override
   Widget build(BuildContext context) {
-    return Navigator(
+    return NavigatorSupport(
       key: navigationKey,
       initialRoute: HomePage.ROUTE_NAME,
       onGenerateRoute: (settings) {
@@ -28,7 +29,7 @@ class _AuthorizedNavigationState extends State<AuthorizedNavigation> {
             );
           case Module1Navigation.ROUTE_NAME:
             return MaterialPageRoute(
-                builder: (context) => Module1Navigation(navigationKey),
+                builder: (context) => Module1Navigation(),
                 settings: settings
             );
           default:
