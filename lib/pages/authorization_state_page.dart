@@ -26,10 +26,15 @@ class _AuthorizationStatePageState extends State<AuthorizationStatePage> {
         builder: (context, state) {
           developer.log('build state: $state', name: TAG);
           return state.when(
-              authorized: () => AuthorizedNavigation(),
+              authorized: (user) => AuthorizedNavigation(),
               unauthorized: () => AuthorizationNavigation(),
           );
         },
+      buildWhen: (previous, current) {
+          developer.log('build previous.runtimeType ${previous.runtimeType}', name: TAG);
+          developer.log('build current.runtimeType ${current.runtimeType}', name: TAG);
+          return previous.runtimeType != current.runtimeType;
+      },
     );
   }
 }

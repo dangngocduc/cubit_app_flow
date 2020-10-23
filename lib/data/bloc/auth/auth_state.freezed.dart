@@ -14,8 +14,10 @@ class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
 // ignore: unused_element
-  AuthStateuthorized authorized() {
-    return const AuthStateuthorized();
+  AuthStateuthorized authorized(UserInfo userInfo) {
+    return AuthStateuthorized(
+      userInfo,
+    );
   }
 
 // ignore: unused_element
@@ -32,12 +34,12 @@ const $AuthState = _$AuthStateTearOff();
 mixin _$AuthState {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result authorized(),
+    @required Result authorized(UserInfo userInfo),
     @required Result unauthorized(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result authorized(),
+    Result authorized(UserInfo userInfo),
     Result unauthorized(),
     @required Result orElse(),
   });
@@ -74,6 +76,7 @@ abstract class $AuthStateuthorizedCopyWith<$Res> {
   factory $AuthStateuthorizedCopyWith(
           AuthStateuthorized value, $Res Function(AuthStateuthorized) then) =
       _$AuthStateuthorizedCopyWithImpl<$Res>;
+  $Res call({UserInfo userInfo});
 }
 
 /// @nodoc
@@ -86,46 +89,67 @@ class _$AuthStateuthorizedCopyWithImpl<$Res>
 
   @override
   AuthStateuthorized get _value => super._value as AuthStateuthorized;
+
+  @override
+  $Res call({
+    Object userInfo = freezed,
+  }) {
+    return _then(AuthStateuthorized(
+      userInfo == freezed ? _value.userInfo : userInfo as UserInfo,
+    ));
+  }
 }
 
 /// @nodoc
 class _$AuthStateuthorized implements AuthStateuthorized {
-  const _$AuthStateuthorized();
+  const _$AuthStateuthorized(this.userInfo) : assert(userInfo != null);
+
+  @override
+  final UserInfo userInfo;
 
   @override
   String toString() {
-    return 'AuthState.authorized()';
+    return 'AuthState.authorized(userInfo: $userInfo)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is AuthStateuthorized);
+    return identical(this, other) ||
+        (other is AuthStateuthorized &&
+            (identical(other.userInfo, userInfo) ||
+                const DeepCollectionEquality()
+                    .equals(other.userInfo, userInfo)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userInfo);
+
+  @override
+  $AuthStateuthorizedCopyWith<AuthStateuthorized> get copyWith =>
+      _$AuthStateuthorizedCopyWithImpl<AuthStateuthorized>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result authorized(),
+    @required Result authorized(UserInfo userInfo),
     @required Result unauthorized(),
   }) {
     assert(authorized != null);
     assert(unauthorized != null);
-    return authorized();
+    return authorized(userInfo);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result authorized(),
+    Result authorized(UserInfo userInfo),
     Result unauthorized(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (authorized != null) {
-      return authorized();
+      return authorized(userInfo);
     }
     return orElse();
   }
@@ -157,7 +181,10 @@ class _$AuthStateuthorized implements AuthStateuthorized {
 }
 
 abstract class AuthStateuthorized implements AuthState {
-  const factory AuthStateuthorized() = _$AuthStateuthorized;
+  const factory AuthStateuthorized(UserInfo userInfo) = _$AuthStateuthorized;
+
+  UserInfo get userInfo;
+  $AuthStateuthorizedCopyWith<AuthStateuthorized> get copyWith;
 }
 
 /// @nodoc
@@ -199,7 +226,7 @@ class _$AuthStateUnAuthorized implements AuthStateUnAuthorized {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result authorized(),
+    @required Result authorized(UserInfo userInfo),
     @required Result unauthorized(),
   }) {
     assert(authorized != null);
@@ -210,7 +237,7 @@ class _$AuthStateUnAuthorized implements AuthStateUnAuthorized {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result authorized(),
+    Result authorized(UserInfo userInfo),
     Result unauthorized(),
     @required Result orElse(),
   }) {

@@ -9,7 +9,7 @@ class AuthRepository {
   Future signIn({@required String userName, @required String password}) {
     return Future.delayed(
         Duration(seconds: 2),
-            () => UserInfo(fullName: 'Nguyen Van A', avatar: ''),
+            () => UserInfo(fullName: 'Nguyen Van A', email: 'nguyenvana@gmail.com'),
     );
   }
 }

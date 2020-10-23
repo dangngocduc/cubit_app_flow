@@ -11,6 +11,10 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: AuthorizationStatePage(),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.dark,
     );
+
   }
 }
