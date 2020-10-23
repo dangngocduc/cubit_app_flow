@@ -1,5 +1,6 @@
 import 'dart:developer' as developer;
 import 'package:cubit_app_flow/pages/authorization/sign_in/sign_in_page.dart';
+import 'package:cubit_app_flow/utils/navigator/navigator_support.dart';
 import 'package:flutter/material.dart';
 
 class AuthorizationNavigation extends StatefulWidget {
@@ -12,7 +13,7 @@ class _AuthorizationNavigationState extends State<AuthorizationNavigation> {
   static const TAG = 'AuthorizationNavigation';
   @override
   Widget build(BuildContext context) {
-    return Navigator(
+    return NavigatorSupport(
       initialRoute: SignInPage.ROUTE_NAME,
       onGenerateRoute: (settings) {
         switch(settings.name) {
