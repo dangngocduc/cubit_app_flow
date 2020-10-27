@@ -22,7 +22,7 @@ class _AuthorizationStatePageState extends State<AuthorizationStatePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
+    BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
           developer.log('build state: $state', name: TAG);
           return state.when(

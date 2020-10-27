@@ -23,21 +23,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Page'),
-      ),
+      appBar: AccountAppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            AccountInfoWidget(),
-            ListTile(
-              leading: Icon(Icons.edit),
-              title: Text('Edit Info'),
-              onTap: () {
-                Navigator.pushNamed(context, ProfileEditPage.ROUTE_NAME);
-              },
-            ),
             ListTile(
               leading: Icon(Icons.chrome_reader_mode),
               title: Text('Open Module1'),

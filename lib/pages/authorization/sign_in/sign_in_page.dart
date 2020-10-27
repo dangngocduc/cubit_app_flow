@@ -37,7 +37,7 @@ class _SignInPageState extends State<SignInPage> {
                   SizedBox(height: 48,),
                   TextFormField(
                     decoration: InputDecoration(
-                      icon: Icon(Icons.perm_identity),
+                      prefixIcon: Icon(Icons.perm_identity),
                       hintText: 'Email',
                       labelText: 'Email',
                       filled: true,
@@ -55,7 +55,7 @@ class _SignInPageState extends State<SignInPage> {
                   SizedBox(height: 16,),
                   TextFormField(
                     decoration: InputDecoration(
-                        icon: Icon(Icons.email),
+                        prefixIcon: Icon(Icons.email),
                         hintText: 'Password',
                         labelText: 'Password',
                         filled: true,
