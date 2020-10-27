@@ -22,7 +22,7 @@ dependencies:
   retrofit: 1.3.4
   dio: ^3.0.10
 
-  connectivity: ^0.4.9
+  connectivity: ^0.4.4+1
   data_connection_checker: ^0.3.4
 
   #
