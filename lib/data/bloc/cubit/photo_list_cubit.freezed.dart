@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'retailer_list_cubit.dart';
+part of 'photo_list_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,8 +10,8 @@ part of 'retailer_list_cubit.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$RetailerListStateTearOff {
-  const _$RetailerListStateTearOff();
+class _$PhotoListStateTearOff {
+  const _$PhotoListStateTearOff();
 
 // ignore: unused_element
   _Initial initial() {
@@ -19,13 +19,13 @@ class _$RetailerListStateTearOff {
   }
 
 // ignore: unused_element
-  RetailerModelLoading loading() {
-    return const RetailerModelLoading();
+  _Loading loading() {
+    return const _Loading();
   }
 
 // ignore: unused_element
-  RetailerModelLoaded loaded(RetailerModel retailerModel) {
-    return RetailerModelLoaded(
+  _Loaded loaded(Photo retailerModel) {
+    return _Loaded(
       retailerModel,
     );
   }
@@ -40,57 +40,57 @@ class _$RetailerListStateTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $RetailerListState = _$RetailerListStateTearOff();
+const $PhotoListState = _$PhotoListStateTearOff();
 
 /// @nodoc
-mixin _$RetailerListState {
+mixin _$PhotoListState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loading(),
-    @required Result loaded(RetailerModel retailerModel),
+    @required Result loaded(Photo retailerModel),
     @required Result error(String errorMessage),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loading(),
-    Result loaded(RetailerModel retailerModel),
+    Result loaded(Photo retailerModel),
     Result error(String errorMessage),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
-    @required Result loading(RetailerModelLoading value),
-    @required Result loaded(RetailerModelLoaded value),
+    @required Result loading(_Loading value),
+    @required Result loaded(_Loaded value),
     @required Result error(_Error value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
-    Result loading(RetailerModelLoading value),
-    Result loaded(RetailerModelLoaded value),
+    Result loading(_Loading value),
+    Result loaded(_Loaded value),
     Result error(_Error value),
     @required Result orElse(),
   });
 }
 
 /// @nodoc
-abstract class $RetailerListStateCopyWith<$Res> {
-  factory $RetailerListStateCopyWith(
-          RetailerListState value, $Res Function(RetailerListState) then) =
-      _$RetailerListStateCopyWithImpl<$Res>;
+abstract class $PhotoListStateCopyWith<$Res> {
+  factory $PhotoListStateCopyWith(
+          PhotoListState value, $Res Function(PhotoListState) then) =
+      _$PhotoListStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RetailerListStateCopyWithImpl<$Res>
-    implements $RetailerListStateCopyWith<$Res> {
-  _$RetailerListStateCopyWithImpl(this._value, this._then);
+class _$PhotoListStateCopyWithImpl<$Res>
+    implements $PhotoListStateCopyWith<$Res> {
+  _$PhotoListStateCopyWithImpl(this._value, this._then);
 
-  final RetailerListState _value;
+  final PhotoListState _value;
   // ignore: unused_field
-  final $Res Function(RetailerListState) _then;
+  final $Res Function(PhotoListState) _then;
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$RetailerListStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res> extends _$PhotoListStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -115,7 +115,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'RetailerListState.initial()';
+    return 'PhotoListState.initial()';
   }
 
   @override
@@ -131,7 +131,7 @@ class _$_Initial implements _Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loading(),
-    @required Result loaded(RetailerModel retailerModel),
+    @required Result loaded(Photo retailerModel),
     @required Result error(String errorMessage),
   }) {
     assert(initial != null);
@@ -146,7 +146,7 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loading(),
-    Result loaded(RetailerModel retailerModel),
+    Result loaded(Photo retailerModel),
     Result error(String errorMessage),
     @required Result orElse(),
   }) {
@@ -161,8 +161,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
-    @required Result loading(RetailerModelLoading value),
-    @required Result loaded(RetailerModelLoaded value),
+    @required Result loading(_Loading value),
+    @required Result loaded(_Loaded value),
     @required Result error(_Error value),
   }) {
     assert(initial != null);
@@ -176,8 +176,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
-    Result loading(RetailerModelLoading value),
-    Result loaded(RetailerModelLoaded value),
+    Result loading(_Loading value),
+    Result loaded(_Loaded value),
     Result error(_Error value),
     @required Result orElse(),
   }) {
@@ -189,41 +189,38 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements RetailerListState {
+abstract class _Initial implements PhotoListState {
   const factory _Initial() = _$_Initial;
 }
 
 /// @nodoc
-abstract class $RetailerModelLoadingCopyWith<$Res> {
-  factory $RetailerModelLoadingCopyWith(RetailerModelLoading value,
-          $Res Function(RetailerModelLoading) then) =
-      _$RetailerModelLoadingCopyWithImpl<$Res>;
+abstract class _$LoadingCopyWith<$Res> {
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
+      __$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RetailerModelLoadingCopyWithImpl<$Res>
-    extends _$RetailerListStateCopyWithImpl<$Res>
-    implements $RetailerModelLoadingCopyWith<$Res> {
-  _$RetailerModelLoadingCopyWithImpl(
-      RetailerModelLoading _value, $Res Function(RetailerModelLoading) _then)
-      : super(_value, (v) => _then(v as RetailerModelLoading));
+class __$LoadingCopyWithImpl<$Res> extends _$PhotoListStateCopyWithImpl<$Res>
+    implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
+      : super(_value, (v) => _then(v as _Loading));
 
   @override
-  RetailerModelLoading get _value => super._value as RetailerModelLoading;
+  _Loading get _value => super._value as _Loading;
 }
 
 /// @nodoc
-class _$RetailerModelLoading implements RetailerModelLoading {
-  const _$RetailerModelLoading();
+class _$_Loading implements _Loading {
+  const _$_Loading();
 
   @override
   String toString() {
-    return 'RetailerListState.loading()';
+    return 'PhotoListState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is RetailerModelLoading);
+    return identical(this, other) || (other is _Loading);
   }
 
   @override
@@ -234,7 +231,7 @@ class _$RetailerModelLoading implements RetailerModelLoading {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loading(),
-    @required Result loaded(RetailerModel retailerModel),
+    @required Result loaded(Photo retailerModel),
     @required Result error(String errorMessage),
   }) {
     assert(initial != null);
@@ -249,7 +246,7 @@ class _$RetailerModelLoading implements RetailerModelLoading {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loading(),
-    Result loaded(RetailerModel retailerModel),
+    Result loaded(Photo retailerModel),
     Result error(String errorMessage),
     @required Result orElse(),
   }) {
@@ -264,8 +261,8 @@ class _$RetailerModelLoading implements RetailerModelLoading {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
-    @required Result loading(RetailerModelLoading value),
-    @required Result loaded(RetailerModelLoaded value),
+    @required Result loading(_Loading value),
+    @required Result loaded(_Loaded value),
     @required Result error(_Error value),
   }) {
     assert(initial != null);
@@ -279,8 +276,8 @@ class _$RetailerModelLoading implements RetailerModelLoading {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
-    Result loading(RetailerModelLoading value),
-    Result loaded(RetailerModelLoaded value),
+    Result loading(_Loading value),
+    Result loaded(_Loaded value),
     Result error(_Error value),
     @required Result orElse(),
   }) {
@@ -292,58 +289,52 @@ class _$RetailerModelLoading implements RetailerModelLoading {
   }
 }
 
-abstract class RetailerModelLoading implements RetailerListState {
-  const factory RetailerModelLoading() = _$RetailerModelLoading;
+abstract class _Loading implements PhotoListState {
+  const factory _Loading() = _$_Loading;
 }
 
 /// @nodoc
-abstract class $RetailerModelLoadedCopyWith<$Res> {
-  factory $RetailerModelLoadedCopyWith(
-          RetailerModelLoaded value, $Res Function(RetailerModelLoaded) then) =
-      _$RetailerModelLoadedCopyWithImpl<$Res>;
-  $Res call({RetailerModel retailerModel});
+abstract class _$LoadedCopyWith<$Res> {
+  factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
+      __$LoadedCopyWithImpl<$Res>;
+  $Res call({Photo retailerModel});
 }
 
 /// @nodoc
-class _$RetailerModelLoadedCopyWithImpl<$Res>
-    extends _$RetailerListStateCopyWithImpl<$Res>
-    implements $RetailerModelLoadedCopyWith<$Res> {
-  _$RetailerModelLoadedCopyWithImpl(
-      RetailerModelLoaded _value, $Res Function(RetailerModelLoaded) _then)
-      : super(_value, (v) => _then(v as RetailerModelLoaded));
+class __$LoadedCopyWithImpl<$Res> extends _$PhotoListStateCopyWithImpl<$Res>
+    implements _$LoadedCopyWith<$Res> {
+  __$LoadedCopyWithImpl(_Loaded _value, $Res Function(_Loaded) _then)
+      : super(_value, (v) => _then(v as _Loaded));
 
   @override
-  RetailerModelLoaded get _value => super._value as RetailerModelLoaded;
+  _Loaded get _value => super._value as _Loaded;
 
   @override
   $Res call({
     Object retailerModel = freezed,
   }) {
-    return _then(RetailerModelLoaded(
-      retailerModel == freezed
-          ? _value.retailerModel
-          : retailerModel as RetailerModel,
+    return _then(_Loaded(
+      retailerModel == freezed ? _value.retailerModel : retailerModel as Photo,
     ));
   }
 }
 
 /// @nodoc
-class _$RetailerModelLoaded implements RetailerModelLoaded {
-  const _$RetailerModelLoaded(this.retailerModel)
-      : assert(retailerModel != null);
+class _$_Loaded implements _Loaded {
+  const _$_Loaded(this.retailerModel) : assert(retailerModel != null);
 
   @override
-  final RetailerModel retailerModel;
+  final Photo retailerModel;
 
   @override
   String toString() {
-    return 'RetailerListState.loaded(retailerModel: $retailerModel)';
+    return 'PhotoListState.loaded(retailerModel: $retailerModel)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is RetailerModelLoaded &&
+        (other is _Loaded &&
             (identical(other.retailerModel, retailerModel) ||
                 const DeepCollectionEquality()
                     .equals(other.retailerModel, retailerModel)));
@@ -354,15 +345,15 @@ class _$RetailerModelLoaded implements RetailerModelLoaded {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(retailerModel);
 
   @override
-  $RetailerModelLoadedCopyWith<RetailerModelLoaded> get copyWith =>
-      _$RetailerModelLoadedCopyWithImpl<RetailerModelLoaded>(this, _$identity);
+  _$LoadedCopyWith<_Loaded> get copyWith =>
+      __$LoadedCopyWithImpl<_Loaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loading(),
-    @required Result loaded(RetailerModel retailerModel),
+    @required Result loaded(Photo retailerModel),
     @required Result error(String errorMessage),
   }) {
     assert(initial != null);
@@ -377,7 +368,7 @@ class _$RetailerModelLoaded implements RetailerModelLoaded {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loading(),
-    Result loaded(RetailerModel retailerModel),
+    Result loaded(Photo retailerModel),
     Result error(String errorMessage),
     @required Result orElse(),
   }) {
@@ -392,8 +383,8 @@ class _$RetailerModelLoaded implements RetailerModelLoaded {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
-    @required Result loading(RetailerModelLoading value),
-    @required Result loaded(RetailerModelLoaded value),
+    @required Result loading(_Loading value),
+    @required Result loaded(_Loaded value),
     @required Result error(_Error value),
   }) {
     assert(initial != null);
@@ -407,8 +398,8 @@ class _$RetailerModelLoaded implements RetailerModelLoaded {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
-    Result loading(RetailerModelLoading value),
-    Result loaded(RetailerModelLoaded value),
+    Result loading(_Loading value),
+    Result loaded(_Loaded value),
     Result error(_Error value),
     @required Result orElse(),
   }) {
@@ -420,12 +411,11 @@ class _$RetailerModelLoaded implements RetailerModelLoaded {
   }
 }
 
-abstract class RetailerModelLoaded implements RetailerListState {
-  const factory RetailerModelLoaded(RetailerModel retailerModel) =
-      _$RetailerModelLoaded;
+abstract class _Loaded implements PhotoListState {
+  const factory _Loaded(Photo retailerModel) = _$_Loaded;
 
-  RetailerModel get retailerModel;
-  $RetailerModelLoadedCopyWith<RetailerModelLoaded> get copyWith;
+  Photo get retailerModel;
+  _$LoadedCopyWith<_Loaded> get copyWith;
 }
 
 /// @nodoc
@@ -436,7 +426,7 @@ abstract class _$ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$RetailerListStateCopyWithImpl<$Res>
+class __$ErrorCopyWithImpl<$Res> extends _$PhotoListStateCopyWithImpl<$Res>
     implements _$ErrorCopyWith<$Res> {
   __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
       : super(_value, (v) => _then(v as _Error));
@@ -463,7 +453,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'RetailerListState.error(errorMessage: $errorMessage)';
+    return 'PhotoListState.error(errorMessage: $errorMessage)';
   }
 
   @override
@@ -488,7 +478,7 @@ class _$_Error implements _Error {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loading(),
-    @required Result loaded(RetailerModel retailerModel),
+    @required Result loaded(Photo retailerModel),
     @required Result error(String errorMessage),
   }) {
     assert(initial != null);
@@ -503,7 +493,7 @@ class _$_Error implements _Error {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loading(),
-    Result loaded(RetailerModel retailerModel),
+    Result loaded(Photo retailerModel),
     Result error(String errorMessage),
     @required Result orElse(),
   }) {
@@ -518,8 +508,8 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
-    @required Result loading(RetailerModelLoading value),
-    @required Result loaded(RetailerModelLoaded value),
+    @required Result loading(_Loading value),
+    @required Result loaded(_Loaded value),
     @required Result error(_Error value),
   }) {
     assert(initial != null);
@@ -533,8 +523,8 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
-    Result loading(RetailerModelLoading value),
-    Result loaded(RetailerModelLoaded value),
+    Result loading(_Loading value),
+    Result loaded(_Loaded value),
     Result error(_Error value),
     @required Result orElse(),
   }) {
@@ -546,7 +536,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements RetailerListState {
+abstract class _Error implements PhotoListState {
   const factory _Error(String errorMessage) = _$_Error;
 
   String get errorMessage;

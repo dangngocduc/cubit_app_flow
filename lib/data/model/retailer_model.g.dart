@@ -3,6 +3,47 @@
 part of 'retailer_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class RetailerModelAdapter extends TypeAdapter<RetailerModel> {
+  @override
+  final int typeId = 3;
+
+  @override
+  RetailerModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RetailerModel(
+      pagination: fields[0] as Pagination,
+      retailers: (fields[1] as List)?.cast<Retailer>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, RetailerModel obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.pagination)
+      ..writeByte(1)
+      ..write(obj.retailers);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RetailerModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 

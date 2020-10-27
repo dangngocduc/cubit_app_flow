@@ -6,4 +6,5 @@ abstract class RetailerListState with _$RetailerListState {
   const factory RetailerListState.loading() = RetailerModelLoading;
   const factory RetailerListState.loaded(RetailerModel retailerModel) =
       RetailerModelLoaded;
+  const factory RetailerListState.error(String errorMessage) = _Error;
 }
