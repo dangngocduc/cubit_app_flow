@@ -1,6 +1,7 @@
 import 'dart:developer' as developer;
 import 'package:cubit_app_flow/pages/authorized/home/home_page.dart';
 import 'package:cubit_app_flow/pages/authorized/profile/profile_edit_page.dart';
+import 'package:cubit_app_flow/pages/photo/photo_navigation.dart';
 import 'package:cubit_app_flow/utils/navigator/navigator_support.dart';
 import 'package:flutter/material.dart';
 
@@ -14,29 +15,27 @@ class AuthorizedNavigation extends StatefulWidget {
 
 class _AuthorizedNavigationState extends State<AuthorizedNavigation> {
   static const TAG = 'AuthorizedNavigation';
-  GlobalKey<NavigatorState> navigationKey = GlobalKey(debugLabel: 'AuthorizedNavigation');
+  GlobalKey<NavigatorState> navigationKey =
+      GlobalKey(debugLabel: 'AuthorizedNavigation');
   @override
   Widget build(BuildContext context) {
     return NavigatorSupport(
       key: navigationKey,
       initialRoute: HomePage.ROUTE_NAME,
       onGenerateRoute: (settings) {
-        switch(settings.name) {
+        switch (settings.name) {
           case ProfileEditPage.ROUTE_NAME:
             return MaterialPageRoute(
-                builder: (context) => ProfileEditPage(),
-                settings: settings
-            );
+                builder: (context) => ProfileEditPage(), settings: settings);
           case Module1Navigation.ROUTE_NAME:
             return MaterialPageRoute(
-                builder: (context) => Module1Navigation(),
-                settings: settings
-            );
+                builder: (context) => Module1Navigation(), settings: settings);
+          case PhotoNavigation.ROUTE_NAME:
+            return MaterialPageRoute(
+                builder: (context) => PhotoNavigation(), settings: settings);
           default:
             return MaterialPageRoute(
-              builder: (context) => HomePage(),
-              settings: settings
-            );
+                builder: (context) => HomePage(), settings: settings);
         }
       },
     );

@@ -17,27 +17,30 @@ class PhotoAdapter extends TypeAdapter<Photo> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Photo(
-      albumId: fields[0] as int,
-      id: fields[1] as int,
-      title: fields[2] as String,
-      url: fields[3] as String,
-      thumbnailUrl: fields[4] as String,
+      indexHive: fields[0] as int,
+      albumId: fields[1] as int,
+      id: fields[2] as int,
+      title: fields[3] as String,
+      url: fields[4] as String,
+      thumbnailUrl: fields[5] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, Photo obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
-      ..write(obj.albumId)
+      ..write(obj.indexHive)
       ..writeByte(1)
-      ..write(obj.id)
+      ..write(obj.albumId)
       ..writeByte(2)
-      ..write(obj.title)
+      ..write(obj.id)
       ..writeByte(3)
-      ..write(obj.url)
+      ..write(obj.title)
       ..writeByte(4)
+      ..write(obj.url)
+      ..writeByte(5)
       ..write(obj.thumbnailUrl);
   }
 
@@ -58,6 +61,7 @@ class PhotoAdapter extends TypeAdapter<Photo> {
 
 Photo _$PhotoFromJson(Map<String, dynamic> json) {
   return Photo(
+    indexHive: json['indexHive'] as int ?? 0,
     albumId: json['albumId'] as int,
     id: json['id'] as int,
     title: json['title'] as String,
@@ -67,6 +71,7 @@ Photo _$PhotoFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$PhotoToJson(Photo instance) => <String, dynamic>{
+      'indexHive': instance.indexHive,
       'albumId': instance.albumId,
       'id': instance.id,
       'title': instance.title,

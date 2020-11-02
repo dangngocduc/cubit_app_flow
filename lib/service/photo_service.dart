@@ -11,5 +11,5 @@ abstract class PhotoService {
   factory PhotoService(Dio dio, {String baseUrl}) = _PhotoService;
 
   @GET('photos')
-  Future<Photo> getPhotoList();
+  Future<List<Photo>> getPhotoList();
 }

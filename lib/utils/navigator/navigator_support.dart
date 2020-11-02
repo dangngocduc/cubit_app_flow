@@ -24,22 +24,21 @@ class NavigatorSupport extends StatefulWidget {
     this.onUnknownRoute,
     this.transitionDelegate = const DefaultTransitionDelegate<dynamic>(),
     this.observers = const <NavigatorObserver>[],
-  }): super(key: key);
+  }) : super(key: key);
 
   @override
   NavigatorSupportState createState() => NavigatorSupportState();
 
-  static NavigatorSupportState of(
-      BuildContext context) {
+  static NavigatorSupportState of(BuildContext context) {
     // Handles the case where the input context is a navigator element.
     NavigatorSupportState navigator;
     if (context is StatefulElement && context.state is NavigatorSupportState) {
       navigator = context.state as NavigatorSupportState;
     }
-    navigator = navigator ?? context.findAncestorStateOfType<NavigatorSupportState>();
+    navigator =
+        navigator ?? context.findAncestorStateOfType<NavigatorSupportState>();
     return navigator;
   }
-
 }
 
 class NavigatorSupportState extends State<NavigatorSupport> {
@@ -48,7 +47,7 @@ class NavigatorSupportState extends State<NavigatorSupport> {
 
   NavigatorState _parentNavigator;
 
-  NavigatorState get parent =>  _parentNavigator;
+  NavigatorState get parent => _parentNavigator;
 
   @override
   void didChangeDependencies() {
@@ -61,27 +60,25 @@ class NavigatorSupportState extends State<NavigatorSupport> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        child: Navigator(
-          pages: widget.pages,
-          key: navigatorKey,
-          onGenerateRoute: widget.onGenerateRoute,
-          initialRoute: widget.initialRoute,
-          transitionDelegate: widget.transitionDelegate,
-          observers: [],
-          onGenerateInitialRoutes: widget.onGenerateInitialRoutes,
-          onPopPage: widget.onPopPage,
-          onUnknownRoute: widget.onUnknownRoute,
-        ),
-        onWillPop: () async {
-          if (navigatorKey.currentState.canPop()) {
-            navigatorKey.currentState.pop();
-            return false;
-          } else {
-            return true;
-          }
-        },
+      child: Navigator(
+        pages: widget.pages,
+        key: navigatorKey,
+        onGenerateRoute: widget.onGenerateRoute,
+        initialRoute: widget.initialRoute,
+        transitionDelegate: widget.transitionDelegate,
+        observers: [],
+        onGenerateInitialRoutes: widget.onGenerateInitialRoutes,
+        onPopPage: widget.onPopPage,
+        onUnknownRoute: widget.onUnknownRoute,
+      ),
+      onWillPop: () async {
+        if (navigatorKey.currentState.canPop()) {
+          navigatorKey.currentState.pop();
+          return false;
+        } else {
+          return true;
+        }
+      },
     );
   }
 }
-
-

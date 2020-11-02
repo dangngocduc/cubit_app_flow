@@ -24,9 +24,9 @@ class _$PhotoListStateTearOff {
   }
 
 // ignore: unused_element
-  _Loaded loaded(Photo retailerModel) {
+  _Loaded loaded(List<Photo> photos) {
     return _Loaded(
-      retailerModel,
+      photos,
     );
   }
 
@@ -48,14 +48,14 @@ mixin _$PhotoListState {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loading(),
-    @required Result loaded(Photo retailerModel),
+    @required Result loaded(List<Photo> photos),
     @required Result error(String errorMessage),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loading(),
-    Result loaded(Photo retailerModel),
+    Result loaded(List<Photo> photos),
     Result error(String errorMessage),
     @required Result orElse(),
   });
@@ -131,7 +131,7 @@ class _$_Initial implements _Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loading(),
-    @required Result loaded(Photo retailerModel),
+    @required Result loaded(List<Photo> photos),
     @required Result error(String errorMessage),
   }) {
     assert(initial != null);
@@ -146,7 +146,7 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loading(),
-    Result loaded(Photo retailerModel),
+    Result loaded(List<Photo> photos),
     Result error(String errorMessage),
     @required Result orElse(),
   }) {
@@ -231,7 +231,7 @@ class _$_Loading implements _Loading {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loading(),
-    @required Result loaded(Photo retailerModel),
+    @required Result loaded(List<Photo> photos),
     @required Result error(String errorMessage),
   }) {
     assert(initial != null);
@@ -246,7 +246,7 @@ class _$_Loading implements _Loading {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loading(),
-    Result loaded(Photo retailerModel),
+    Result loaded(List<Photo> photos),
     Result error(String errorMessage),
     @required Result orElse(),
   }) {
@@ -297,7 +297,7 @@ abstract class _Loading implements PhotoListState {
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
-  $Res call({Photo retailerModel});
+  $Res call({List<Photo> photos});
 }
 
 /// @nodoc
@@ -311,38 +311,37 @@ class __$LoadedCopyWithImpl<$Res> extends _$PhotoListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object retailerModel = freezed,
+    Object photos = freezed,
   }) {
     return _then(_Loaded(
-      retailerModel == freezed ? _value.retailerModel : retailerModel as Photo,
+      photos == freezed ? _value.photos : photos as List<Photo>,
     ));
   }
 }
 
 /// @nodoc
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.retailerModel) : assert(retailerModel != null);
+  const _$_Loaded(this.photos) : assert(photos != null);
 
   @override
-  final Photo retailerModel;
+  final List<Photo> photos;
 
   @override
   String toString() {
-    return 'PhotoListState.loaded(retailerModel: $retailerModel)';
+    return 'PhotoListState.loaded(photos: $photos)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Loaded &&
-            (identical(other.retailerModel, retailerModel) ||
-                const DeepCollectionEquality()
-                    .equals(other.retailerModel, retailerModel)));
+            (identical(other.photos, photos) ||
+                const DeepCollectionEquality().equals(other.photos, photos)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(retailerModel);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(photos);
 
   @override
   _$LoadedCopyWith<_Loaded> get copyWith =>
@@ -353,14 +352,14 @@ class _$_Loaded implements _Loaded {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loading(),
-    @required Result loaded(Photo retailerModel),
+    @required Result loaded(List<Photo> photos),
     @required Result error(String errorMessage),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    return loaded(retailerModel);
+    return loaded(photos);
   }
 
   @override
@@ -368,13 +367,13 @@ class _$_Loaded implements _Loaded {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loading(),
-    Result loaded(Photo retailerModel),
+    Result loaded(List<Photo> photos),
     Result error(String errorMessage),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (loaded != null) {
-      return loaded(retailerModel);
+      return loaded(photos);
     }
     return orElse();
   }
@@ -412,9 +411,9 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements PhotoListState {
-  const factory _Loaded(Photo retailerModel) = _$_Loaded;
+  const factory _Loaded(List<Photo> photos) = _$_Loaded;
 
-  Photo get retailerModel;
+  List<Photo> get photos;
   _$LoadedCopyWith<_Loaded> get copyWith;
 }
 
@@ -478,7 +477,7 @@ class _$_Error implements _Error {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loading(),
-    @required Result loaded(Photo retailerModel),
+    @required Result loaded(List<Photo> photos),
     @required Result error(String errorMessage),
   }) {
     assert(initial != null);
@@ -493,7 +492,7 @@ class _$_Error implements _Error {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loading(),
-    Result loaded(Photo retailerModel),
+    Result loaded(List<Photo> photos),
     Result error(String errorMessage),
     @required Result orElse(),
   }) {

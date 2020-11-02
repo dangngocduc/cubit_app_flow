@@ -21,7 +21,7 @@ class _PhotoService implements PhotoService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final Response<Map<String, dynamic>> _result = await _dio.request('photos',
+    final Response<List<dynamic>> _result = await _dio.request('photos',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -29,7 +29,9 @@ class _PhotoService implements PhotoService {
             extra: _extra,
             baseUrl: baseUrl),
         data: _data);
-    final value = Photo.fromJson(_result.data);
+    var value = _result.data
+        .map((dynamic i) => Photo.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 }

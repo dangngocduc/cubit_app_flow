@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 import 'pages/authorization_state_page.dart';
 
-
 class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,6 +14,5 @@ class Application extends StatelessWidget {
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.dark,
     );
-
   }
 }

@@ -2,6 +2,7 @@ import 'dart:developer' as developer;
 import 'package:cubit_app_flow/data/bloc/auth/auth_bloc.dart';
 import 'package:cubit_app_flow/pages/authorized/module1/module1_navigation.dart';
 import 'package:cubit_app_flow/pages/authorized/profile/profile_edit_page.dart';
+import 'package:cubit_app_flow/pages/photo/photo_navigation.dart';
 import 'package:cubit_app_flow/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     developer.log('initState', name: TAG);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +35,13 @@ class _HomePageState extends State<HomePage> {
               title: Text('Open Module1'),
               onTap: () {
                 Navigator.pushNamed(context, Module1Navigation.ROUTE_NAME);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.chrome_reader_mode),
+              title: Text('Photo Module'),
+              onTap: () {
+                Navigator.pushNamed(context, PhotoNavigation.ROUTE_NAME);
               },
             ),
             ListTile(
