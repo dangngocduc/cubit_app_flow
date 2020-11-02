@@ -139,7 +139,12 @@ class HiveServiceImpl implements HiveService {
     if (openBox.isOpen) {
       final _results = await openBox.addAll(items);
       developer.log('$_results', name: 'HiveServiceImpl');
-      transaction(box: openBox, hiveService: this, items: items);
+
+      transaction(
+        box: openBox,
+        hiveService: this,
+        items: await this.getItemsFromBox<T>(openBox),
+      );
     } else {
       throw BoxNotExistsException("Box $boxName isn't exists.");
     }

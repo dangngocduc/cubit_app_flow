@@ -29,8 +29,7 @@ class PhotoListCubit extends Cubit<PhotoListState> {
           await photoService.getPhotoList(),
           boxName: 'photo',
           transaction: ({items, box, hiveService}) async {
-            final result = await hiveService.getItemsFromBox<Photo>(box);
-            emit(PhotoListState.loaded(result));
+            emit(PhotoListState.loaded(items));
           },
         );
       }, onError: () {
