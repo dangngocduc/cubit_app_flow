@@ -1,6 +1,7 @@
 import 'package:cubit_app_flow/data/bloc/cubit/photo_list_cubit.dart';
 // import 'package:cubit_app_flow/service/photo_service.dart';
 import 'package:cubit_app_flow/service/service.dart';
+import 'package:cubit_app_flow/utils/navigator/navigator_support.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,6 +28,11 @@ class _PhotoListPageState extends State<PhotoListPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Photo'),
+          leading: BackButton(
+            onPressed: () {
+              NavigatorSupport.of(context).parent.pop();
+            },
+          ),
         ),
         body: BlocBuilder<PhotoListCubit, PhotoListState>(
           cubit: cubit..getRetailerList(),

@@ -6,18 +6,23 @@ part 'retailer_model.g.dart';
 
 @HiveType(typeId: 3)
 @JsonSerializable(nullable: true)
-class RetailerModel {
+class RetailerModel implements IndexHive {
   factory RetailerModel.fromJson(Map<String, dynamic> json) =>
       _$RetailerModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$RetailerModelToJson(this);
 
   RetailerModel({
+    this.indexHive,
     this.pagination,
     this.retailers,
   });
 
+  @override
+  @JsonKey(nullable: true, defaultValue: 0)
   @HiveField(0)
+  int indexHive;
+  @HiveField(2)
   @JsonKey(nullable: true)
   final Pagination pagination;
   @HiveField(1)
@@ -25,15 +30,12 @@ class RetailerModel {
   final List<Retailer> retailers;
 
   RetailerModel copyWith({
+    int indexHive,
     Pagination pagination,
     List<Retailer> retailers,
-    bool hasPrevious,
-    bool needsTotal,
-    int numberOfPages,
-    int pageSize,
-    int totalNumberOfResults,
   }) =>
       RetailerModel(
+        indexHive: indexHive ?? this.indexHive,
         pagination: pagination ?? this.pagination,
         retailers: retailers ?? this.retailers,
       );

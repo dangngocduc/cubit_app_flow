@@ -1,3 +1,4 @@
+import 'package:cubit_app_flow/data/model/index_hive.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -5,13 +6,14 @@ part 'common_model.g.dart';
 
 @HiveType(typeId: 0)
 @JsonSerializable(nullable: true)
-class Retailer {
+class Retailer implements IndexHive {
   factory Retailer.fromJson(Map<String, dynamic> json) =>
       _$RetailerFromJson(json);
 
   Map<String, dynamic> toJson() => _$RetailerToJson(this);
 
   Retailer({
+    this.indexHive,
     this.adminAccount,
     this.contactAddress,
     this.createdTime,
@@ -31,9 +33,11 @@ class Retailer {
     this.lastVisitDate,
   });
 
+  @override
   @JsonKey(nullable: true)
   @HiveField(0)
-  final String adminAccount;
+  int indexHive;
+
   @JsonKey(nullable: true)
   @HiveField(1)
   final String contactAddress;
@@ -82,8 +86,12 @@ class Retailer {
   @JsonKey(nullable: true)
   @HiveField(16)
   final String lastVisitDate;
+  @JsonKey(nullable: true)
+  @HiveField(17)
+  final String adminAccount;
 
   Retailer copyWith({
+    int indexHive,
     String adminAccount,
     String contactAddress,
     String createdTime,
@@ -103,6 +111,7 @@ class Retailer {
     String lastVisitDate,
   }) =>
       Retailer(
+        indexHive: indexHive ?? this.indexHive,
         adminAccount: adminAccount ?? this.adminAccount,
         contactAddress: contactAddress ?? this.contactAddress,
         createdTime: createdTime ?? this.createdTime,
@@ -125,13 +134,14 @@ class Retailer {
 
 @HiveType(typeId: 1)
 @JsonSerializable(nullable: true)
-class Pagination {
+class Pagination implements IndexHive {
   factory Pagination.fromJson(Map<String, dynamic> json) =>
       _$PaginationFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaginationToJson(this);
 
   Pagination({
+    this.indexHive,
     this.currentPage,
     this.hasNext,
     this.hasPrevious,
@@ -141,8 +151,12 @@ class Pagination {
     this.totalNumberOfResults,
   });
 
+  @override
   @JsonKey(nullable: true)
   @HiveField(0)
+  int indexHive;
+  @JsonKey(nullable: true)
+  @HiveField(7)
   final int currentPage;
   @JsonKey(nullable: true)
   @HiveField(1)
@@ -164,6 +178,7 @@ class Pagination {
   final int totalNumberOfResults;
 
   Pagination copyWith({
+    int indexHive,
     int currentPage,
     bool hasNext,
     bool hasPrevious,
@@ -173,6 +188,7 @@ class Pagination {
     int totalNumberOfResults,
   }) =>
       Pagination(
+        indexHive: indexHive ?? this.indexHive,
         currentPage: currentPage ?? this.currentPage,
         hasNext: hasNext ?? this.hasNext,
         hasPrevious: hasPrevious ?? this.hasPrevious,

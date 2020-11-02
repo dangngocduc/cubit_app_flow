@@ -16,10 +16,14 @@ typedef HiveItemsTransaction<T> = void Function({
   HiveService hiveService,
 });
 
-// typedef HiveItemGetAbstraction<T> = Future<T> Function(
-//   int index, {
-//   String boxName,
-// });
+typedef HiveItemsOnExistsTransaction<T> = void Function(
+  List<T> items, {
+  HiveService hiveService,
+});
+
+typedef HiveItemsOnEmptyTransaction<T> = void Function({
+  HiveService hiveService,
+});
 
 abstract class HiveService {
   void writeItem<T>(
@@ -35,7 +39,19 @@ abstract class HiveService {
     HiveItemsTransaction transaction,
   });
 
-  Future<T> getItemByKey<T>(int index, {String boxName});
+  // void existsItems<T>({
+  //   String boxName,
+  //   HiveItemsTransaction transaction,
+  // });
+
+  void existsItems<T>(
+    String boxName, {
+    HiveItemsOnExistsTransaction onExists,
+    HiveItemsOnEmptyTransaction onEmpty,
+  });
+
+  Future<T> getKeyAtIndex<T>(int index, {String boxName});
+  Future<T> getItemByKey<T>(int key, {String boxName});
   Future<T> getItemAtIndex<T>(int index, {String boxName});
 
   Future<List<T>> getItemsFromBox<T>(Box<T> box);
@@ -50,10 +66,11 @@ class HiveServiceImpl implements HiveService {
     return openBox.getAt(index);
   }
 
-  // Future<T> _getAt<T>(String boxName, int index) async {
-  //   final openBox = await Hive.openBox<T>(boxName);
-  //   return openBox.getAt(index);
-  // }
+  @override
+  Future<T> getKeyAtIndex<T>(int index, {String boxName}) async {
+    final openBox = await Hive.openBox<T>(boxName);
+    return openBox.keyAt(index);
+  }
 
   @override
   Future<T> getItemByKey<T>(int index, {String boxName}) async {
@@ -61,17 +78,13 @@ class HiveServiceImpl implements HiveService {
     return openBox.get(index);
   }
 
-  // Future<T> _getBy<T>(String boxName, int index) async {
-  //   final openBox = await Hive.openBox<T>(boxName);
-  //   return openBox.get(index);
-  // }
-
   @override
   Future<List<T>> getItemsFromBox<T>(Box<T> box) async {
     List<T> boxList = List<T>();
     if (box.isOpen) {
       for (var i = 0; i < box.length; i++) {
         final item = box.getAt(i);
+
         (item as IndexHive).indexHive = box.keyAt(i);
         boxList.add(item);
       }
@@ -83,7 +96,6 @@ class HiveServiceImpl implements HiveService {
   @override
   void deleteWith<T>({String boxName}) async {
     final openBox = await Hive.openBox<T>(boxName);
-
     final isExists = await Hive.boxExists(boxName);
     if (isExists) final _ = await Hive.deleteBoxFromDisk(boxName);
   }
@@ -130,6 +142,19 @@ class HiveServiceImpl implements HiveService {
       transaction(box: openBox, hiveService: this, items: items);
     } else {
       throw BoxNotExistsException("Box $boxName isn't exists.");
+    }
+  }
+
+  @override
+  void existsItems<T>(String boxName,
+      {HiveItemsOnExistsTransaction onExists,
+      HiveItemsOnEmptyTransaction onEmpty}) async {
+    final openBox = await Hive.openBox<T>(boxName);
+    if (openBox.isNotEmpty) {
+      final results = await getItemsFromBox(openBox);
+      onExists(results, hiveService: this);
+    } else {
+      onEmpty(hiveService: this);
     }
   }
 }
