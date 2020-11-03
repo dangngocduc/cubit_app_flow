@@ -17,7 +17,8 @@ class RetailerAdapter extends TypeAdapter<Retailer> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Retailer(
-      adminAccount: fields[0] as String,
+      indexHive: fields[0] as int,
+      adminAccount: fields[17] as String,
       contactAddress: fields[1] as String,
       createdTime: fields[2] as String,
       description: fields[3] as String,
@@ -40,9 +41,9 @@ class RetailerAdapter extends TypeAdapter<Retailer> {
   @override
   void write(BinaryWriter writer, Retailer obj) {
     writer
-      ..writeByte(17)
+      ..writeByte(18)
       ..writeByte(0)
-      ..write(obj.adminAccount)
+      ..write(obj.indexHive)
       ..writeByte(1)
       ..write(obj.contactAddress)
       ..writeByte(2)
@@ -74,7 +75,9 @@ class RetailerAdapter extends TypeAdapter<Retailer> {
       ..writeByte(15)
       ..write(obj.opsRetailerSizes)
       ..writeByte(16)
-      ..write(obj.lastVisitDate);
+      ..write(obj.lastVisitDate)
+      ..writeByte(17)
+      ..write(obj.adminAccount);
   }
 
   @override
@@ -99,7 +102,8 @@ class PaginationAdapter extends TypeAdapter<Pagination> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Pagination(
-      currentPage: fields[0] as int,
+      indexHive: fields[0] as int,
+      currentPage: fields[7] as int,
       hasNext: fields[1] as bool,
       hasPrevious: fields[2] as bool,
       needsTotal: fields[3] as bool,
@@ -112,8 +116,10 @@ class PaginationAdapter extends TypeAdapter<Pagination> {
   @override
   void write(BinaryWriter writer, Pagination obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
+      ..write(obj.indexHive)
+      ..writeByte(7)
       ..write(obj.currentPage)
       ..writeByte(1)
       ..write(obj.hasNext)
@@ -146,6 +152,7 @@ class PaginationAdapter extends TypeAdapter<Pagination> {
 
 Retailer _$RetailerFromJson(Map<String, dynamic> json) {
   return Retailer(
+    indexHive: json['indexHive'] as int,
     adminAccount: json['adminAccount'] as String,
     contactAddress: json['contactAddress'] as String,
     createdTime: json['createdTime'] as String,
@@ -167,7 +174,7 @@ Retailer _$RetailerFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$RetailerToJson(Retailer instance) => <String, dynamic>{
-      'adminAccount': instance.adminAccount,
+      'indexHive': instance.indexHive,
       'contactAddress': instance.contactAddress,
       'createdTime': instance.createdTime,
       'description': instance.description,
@@ -184,10 +191,12 @@ Map<String, dynamic> _$RetailerToJson(Retailer instance) => <String, dynamic>{
       'documents': instance.documents,
       'opsRetailerSizes': instance.opsRetailerSizes,
       'lastVisitDate': instance.lastVisitDate,
+      'adminAccount': instance.adminAccount,
     };
 
 Pagination _$PaginationFromJson(Map<String, dynamic> json) {
   return Pagination(
+    indexHive: json['indexHive'] as int,
     currentPage: json['currentPage'] as int,
     hasNext: json['hasNext'] as bool,
     hasPrevious: json['hasPrevious'] as bool,
@@ -200,6 +209,7 @@ Pagination _$PaginationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$PaginationToJson(Pagination instance) =>
     <String, dynamic>{
+      'indexHive': instance.indexHive,
       'currentPage': instance.currentPage,
       'hasNext': instance.hasNext,
       'hasPrevious': instance.hasPrevious,

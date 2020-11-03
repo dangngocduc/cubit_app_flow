@@ -39,11 +39,6 @@ abstract class HiveService {
     HiveItemsTransaction transaction,
   });
 
-  // void existsItems<T>({
-  //   String boxName,
-  //   HiveItemsTransaction transaction,
-  // });
-
   void existsItems<T>(
     String boxName, {
     HiveItemsOnExistsTransaction onExists,
@@ -54,6 +49,7 @@ abstract class HiveService {
   Future<T> getItemByKey<T>(int key, {String boxName});
   Future<T> getItemAtIndex<T>(int index, {String boxName});
 
+  Future<T> getItemFromBox<T>(Box<T> box);
   Future<List<T>> getItemsFromBox<T>(Box<T> box);
 
   // void deleteWith({String boxName});
@@ -71,6 +67,7 @@ class HiveServiceImpl implements HiveService {
     final openBox = await Hive.openBox<T>(boxName);
     return openBox.keyAt(index);
   }
+  // baseUrl: "https://apex-dr-commerce.vinid.net/partner/v2/",
 
   @override
   Future<T> getItemByKey<T>(int index, {String boxName}) async {
@@ -94,10 +91,29 @@ class HiveServiceImpl implements HiveService {
   }
 
   @override
-  void deleteWith<T>({String boxName}) async {
+  Future<T> getItemFromBox<T>(Box<T> box) async {
+    // if (box.isOpen) {
+    //   box.
+    //   // return boxList;
+    // }
+  }
+
+  void putAtIndex<T>(int index, {String boxName, T value}) async {
     final openBox = await Hive.openBox<T>(boxName);
-    final isExists = await Hive.boxExists(boxName);
-    if (isExists) final _ = await Hive.deleteBoxFromDisk(boxName);
+
+    return await openBox.putAt(index, value);
+  }
+
+  void putAll<T>({String boxName, Map<dynamic, T> entries}) async {
+    final openBox = await Hive.openBox<T>(boxName);
+    return await openBox.putAll(entries);
+  }
+
+  @override
+  void deleteWith<T>({String boxName}) async {
+    // final openBox = await Hive.openBox<T>(boxName);
+    // final isExists = await Hive.boxExists(boxName);
+    // if (isExists) final _ = await Hive.deleteBoxFromDisk(boxName);
   }
 
   @override
@@ -117,12 +133,6 @@ class HiveServiceImpl implements HiveService {
       transaction(box: openBox, hiveService: this, item: item);
     } else {
       throw BoxNotExistsException("Box $boxName isn't exists.");
-    }
-  }
-
-  Future<void> _clearBox<T>(Box<T> box) async {
-    if (box.isOpen && box.isNotEmpty) {
-      return box.deleteAll(box.keys);
     }
   }
 
@@ -160,6 +170,18 @@ class HiveServiceImpl implements HiveService {
       onExists(results, hiveService: this);
     } else {
       onEmpty(hiveService: this);
+    }
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  Future<void> _clearBox<T>(Box<T> box) async {
+    if (box.isOpen && box.isNotEmpty) {
+      return box.deleteAll(box.keys);
     }
   }
 }

@@ -20,19 +20,20 @@ class PhotoListCubit extends Cubit<PhotoListState> {
 
   PhotoListCubit() : super(PhotoListState.initial());
 
-  Future getRetailerList() async {
+  Future getPhotoList() async {
     try {
       emit(PhotoListState.loading());
 
-      modelStreamService.execute(onSuccess: () async {
+      modelStreamService.execute(onOnline: () async {
         hiveService.writeItems<Photo>(
           await photoService.getPhotoList(),
+          updateLastest: false,
           boxName: 'photo',
           transaction: ({items, box, hiveService}) async {
             emit(PhotoListState.loaded(items));
           },
         );
-      }, onError: () {
+      }, onOffline: () {
         hiveService.existsItems<Photo>(
           'photo',
           onExists: (items, {hiveService}) {
@@ -48,26 +49,14 @@ class PhotoListCubit extends Cubit<PhotoListState> {
     }
   }
 
-  Future<Photo> getRetailerItem(int index) async {
+  Future<Photo> getPhotoItem(int index) async {
     final result = await hiveService.getItemAtIndex<Photo>(
       index,
       boxName: 'photo',
     );
+    final getKeyAtIndex = await hiveService.getKeyAtIndex<Photo>(index);
+    print("getKeyAtIndex: ${getKeyAtIndex.title}");
+    print(result.indexHive);
     return result;
   }
-
-  // void createWorkerThread() {
-  //   ReceivePort receivePort = ReceivePort();
-  //   Isolate.spawn(loadData, receivePort.sendPort);
-
-  //   receivePort.listen((message) {
-  //     emit(PhotoListState.loaded(message));
-  //   });
-  // }
-
-  // static loadData(SendPort sendPort) async {
-  //   final dataResult = await photoService.getPhotoList();
-
-  //   sendPort.send(dataResult);
-  // }
 }

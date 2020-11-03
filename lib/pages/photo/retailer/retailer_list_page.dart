@@ -1,39 +1,37 @@
-import 'package:cubit_app_flow/data/bloc/cubit/photo_list_cubit.dart';
 import 'package:cubit_app_flow/data/bloc/retailer_list/retailer_list_cubit.dart';
 import 'package:cubit_app_flow/utils/navigator/navigator_support.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class PhotoListPage extends StatefulWidget {
-  static const ROUTE_NAME = 'PhotoListPage';
-  const PhotoListPage({Key key}) : super(key: key);
+class RetailerListPage extends StatefulWidget {
+  static const ROUTE_NAME = 'RetailerListPage';
+  const RetailerListPage({Key key}) : super(key: key);
 
   @override
-  _PhotoListPageState createState() => _PhotoListPageState();
+  _RetailerListPageState createState() => _RetailerListPageState();
 }
 
-class _PhotoListPageState extends State<PhotoListPage> {
+class _RetailerListPageState extends State<RetailerListPage> {
   @override
   void initState() {
     super.initState();
   }
 
-  final photoCubit = PhotoListCubit();
   final retailerCubit = RetailerListCubit();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Photo'),
+          title: Text('Retailer'),
           leading: BackButton(
             onPressed: () {
               NavigatorSupport.of(context).parent.pop();
             },
           ),
         ),
-        body: BlocBuilder<PhotoListCubit, PhotoListState>(
-          cubit: photoCubit..getPhotoList(),
+        body: BlocBuilder<RetailerListCubit, RetailerListState>(
+          cubit: retailerCubit..getRetailerList(),
           builder: (context, state) {
             return state.when(initial: () {
               return Container();
@@ -41,12 +39,13 @@ class _PhotoListPageState extends State<PhotoListPage> {
               return Container();
             }, loaded: (data) {
               return ListView.builder(
-                itemCount: data.length,
+                itemCount: data.retailers.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () async {
-                      final dataResult = await photoCubit.getPhotoItem(index);
-                      print("dataResult: ${dataResult.title}");
+                      // final dataResult =
+                      //     await RetailerCubit.getRetailerItem(index);
+                      // print("dataResult: ${dataResult.title}");
                     },
                     child: Row(
                       children: [
@@ -56,7 +55,7 @@ class _PhotoListPageState extends State<PhotoListPage> {
                         ),
                         Expanded(
                           child: Text(
-                            data[index].title ?? '',
+                            data.retailers[index].name ?? '',
                             maxLines: 1,
                           ),
                         ),

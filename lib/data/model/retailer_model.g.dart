@@ -17,7 +17,8 @@ class RetailerModelAdapter extends TypeAdapter<RetailerModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return RetailerModel(
-      pagination: fields[0] as Pagination,
+      indexHive: fields[0] as int,
+      pagination: fields[2] as Pagination,
       retailers: (fields[1] as List)?.cast<Retailer>(),
     );
   }
@@ -25,8 +26,10 @@ class RetailerModelAdapter extends TypeAdapter<RetailerModel> {
   @override
   void write(BinaryWriter writer, RetailerModel obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
+      ..write(obj.indexHive)
+      ..writeByte(2)
       ..write(obj.pagination)
       ..writeByte(1)
       ..write(obj.retailers);
@@ -49,6 +52,7 @@ class RetailerModelAdapter extends TypeAdapter<RetailerModel> {
 
 RetailerModel _$RetailerModelFromJson(Map<String, dynamic> json) {
   return RetailerModel(
+    indexHive: json['indexHive'] as int ?? 0,
     pagination: json['pagination'] == null
         ? null
         : Pagination.fromJson(json['pagination'] as Map<String, dynamic>),
@@ -61,6 +65,7 @@ RetailerModel _$RetailerModelFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$RetailerModelToJson(RetailerModel instance) =>
     <String, dynamic>{
+      'indexHive': instance.indexHive,
       'pagination': instance.pagination,
       'retailers': instance.retailers,
     };

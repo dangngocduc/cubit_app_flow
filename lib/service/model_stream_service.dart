@@ -5,23 +5,23 @@ typedef ConnectivityOnFailture = void Function();
 
 abstract class ModelStreamService {
   void execute({
-    ConnectivityOnSuccess onSuccess,
-    ConnectivityOnSuccess onError,
+    ConnectivityOnSuccess onOnline,
+    ConnectivityOnSuccess onOffline,
   });
 }
 
 class ModelStreamServiceImpl implements ModelStreamService {
   @override
   void execute({
-    ConnectivityOnSuccess onSuccess,
-    ConnectivityOnSuccess onError,
+    ConnectivityOnSuccess onOnline,
+    ConnectivityOnSuccess onOffline,
   }) async {
     final connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return onSuccess();
+      return onOnline();
     } else {
-      return onError();
+      return onOffline();
     }
   }
 }

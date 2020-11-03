@@ -8,6 +8,7 @@ import 'package:hive/hive.dart';
 import 'dart:developer' as developer;
 import 'package:path_provider/path_provider.dart';
 
+import 'data/model/models.dart';
 import 'data/repositories/auth_repository.dart';
 
 void main() async {
@@ -18,6 +19,30 @@ void main() async {
   developer.log(document.path);
 
   Hive.registerAdapter(PhotoAdapter());
+  Hive.registerAdapter(RetailerModelAdapter());
+  Hive.registerAdapter(PaginationAdapter());
+  Hive.registerAdapter(RetailerAdapter());
+
+
+  {
+    "meta": {
+        "code": 200,
+        "message": "OK"
+    },
+    "data": {
+        "list_item": [
+                "item": "1",
+                "item": "2",
+                "item": "3",
+        ],
+        "order_id": "20201023T003IDN56VMJ",
+        "expired_at": 1603424643,
+    }
+  }
+
+  final result = Map<String, dynamic>();
+  result["meta"] = 
+
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<AuthBloc>(
